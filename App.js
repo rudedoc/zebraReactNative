@@ -30,6 +30,7 @@ class App extends Component {
     this.setState({printers: printersArray});
     this.isDiscovering = true;
     this.buttonTitle = 'Scanning for Zebra Printers ...';
+    console.log('Scanning for Zebra Printers ...');
 
     ZSDKModule.zsdkPrinterDiscoveryBluetooth(
        // The callback to be called by the native module after Bluetooth discovery finishes.

@@ -98,10 +98,12 @@ public class ZSDKModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void zsdkPrinterDiscoveryBluetooth(Callback callback) {
+        Log.d("ZSDKModule", "Going to discover printers via Bluetooth");
         try {
             BluetoothDiscoverer.findPrinters(getReactApplicationContext(), new DiscoveryResult(callback));
+            Log.d("ZSDKModule", "Discovery started");
         } catch (ConnectionException e) {
-            // Do something
+            Log.d("ZSDKModule", "ConnectionException: " + e.getMessage());
         } finally {
             // Do something
         }
@@ -130,6 +132,7 @@ public class ZSDKModule extends ReactContextBaseJavaModule {
 
         @Override
         public void discoveryFinished() {
+            Log.d("ZSDKModule", "Discovery finished");
 
             // Convert the foundPrinterList into JSON string
             List<JSONObject> jsonObj = new ArrayList<JSONObject>();
@@ -148,6 +151,7 @@ public class ZSDKModule extends ReactContextBaseJavaModule {
 
         @Override
         public void discoveryError(String message) {
+            Log.d("ZSDKModule", "Discovery error: " + message);
             // To do
         }
     }
